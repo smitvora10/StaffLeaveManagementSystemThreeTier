@@ -1,0 +1,443 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SLMSAdminPanel.master.cs" Inherits="SLMSAdminPanel_SLMSAdminPanel" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 4 admin, bootstrap 4, css3 dashboard, bootstrap 4 dashboard, Ample lite admin bootstrap 4 dashboard, frontend, responsive bootstrap 4 admin template, Ample admin lite dashboard bootstrap 4 dashboard template">
+    <meta name="description"
+        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Staff Leave Management System</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="<%=ResolveClientUrl("~/Content/assets/plugins/images/favicon.png")%>">
+    <!-- Custom CSS -->
+    <link href="<%=ResolveClientUrl("~/Content/assets/plugins/bower_components/chartist/dist/chartist.min.css")%>" rel="stylesheet">
+    <link rel="stylesheet" href="<%=ResolveClientUrl("~/Content/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css")%>">
+    <!-- Custom CSS -->
+    <link href="<%=ResolveClientUrl("~/Content/assets/css/style.min.css")%>" rel="stylesheet">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <asp:ContentPlaceHolder ID="cphScriptBlock" runat="server">
+        </asp:ContentPlaceHolder>
+
+
+        <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+            data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+            <!-- ============================================================== -->
+            <!-- Topbar header - style you can find in pages.scss -->
+            <!-- ============================================================== -->
+            <header class="topbar" data-navbarbg="skin5">
+                <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+
+                    <div class="navbar-header" data-logobg="skin6">
+
+                        <!-- ============================================================== -->
+                        <!-- Logo -->
+                        <!-- ============================================================== -->
+                        <a class="navbar-brand" href="#">
+                            <!-- Logo icon -->
+                            <b class="logo-icon">
+                                <!-- Dark Logo icon -->
+                                <span style="font-size: 30px; font-family: 'Franklin Gothic'; font-weight: bold; color: black; text-align: center; padding-left: 20px;">Sabbatical
+                                </span>
+
+
+
+                            </b>
+
+                        </a>
+
+                        <!-- ============================================================== -->
+                        <!-- End Logo -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- toggle and nav items -->
+                        <!-- ============================================================== -->
+
+                        <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
+                            href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Logo -->
+                    <!-- ============================================================== -->
+                    <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                        <ul class="navbar-nav d-none d-md-block d-lg-none">
+                            <li class="nav-item">
+                                <a class="nav-toggler nav-link waves-effect waves-light text-white"
+                                    href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                            </li>
+                        </ul>
+                        <span style="font-size: 25px; font-family: 'Franklin Gothic'; font-weight: bold; color: white; float: right; padding-left: 25px;">Staff Leave Management System</span>
+
+
+                        <!-- ============================================================== -->
+                        <!-- Right side toggle and nav items -->
+                        <!-- ============================================================== -->
+                        <ul class="navbar-nav ml-auto d-flex align-items-center">
+
+                            <!-- ============================================================== -->
+                            <!-- Search -->
+                            <!-- ============================================================== -->
+                            <%--                            <li class="in">
+
+                                <input type="text" placeholder="Search..." class="form-control mt-0">
+                                <a href="#" class="active">
+                                    <i class="fa fa-search"></i>
+                                </a>
+
+                            <!-- User profile and search -->
+                            <!-- ============================================================== -->
+                         
+                            </li>--%>
+                            <!-- ============================================================== -->
+
+                            <li class="sidebar-item">
+                                <div class="dropdown">
+
+
+                                    <asp:HyperLink runat="server" CssClass="dropdown-toggle sidebar-link waves-effect waves-dark sidebar-link" data-toggle="dropdown">
+                                        <span class="text-white font-medium m-3 font-weight-bold">
+                                            <asp:Image ID="imgUserPhoto1" alt="user-img" Width="36px" Height="30px" Style="border-radius: 25px" runat="server" ImageUrl="" />
+                                            &nbsp;<asp:Label ID="lblUsername" runat="server"></asp:Label></span>
+                                    </asp:HyperLink>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control bg-light" NavigateUrl="~/AdminPanel/User/UserProfile.aspx">User Profile</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control bg-light" NavigateUrl="~/Login/LoginPage.aspx">Logout</asp:HyperLink></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!-- ============================================================== -->
+                            <!-- User profile and search -->
+                            <!-- ============================================================== -->
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- ============================================================== -->
+            <!-- End Topbar header -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Left Sidebar - style you can find in sidebar.scss  -->
+            <!-- ============================================================== -->
+            <aside class="left-sidebar" data-sidebarbg="skin6">
+                <!-- Sidebar scroll-->
+                <div class="scroll-sidebar">
+                    <!-- Sidebar navigation-->
+                    <nav class="sidebar-nav">
+                        <ul id="sidebarnav">
+
+                            <li class="sidebar-item">
+                                <asp:HyperLink runat="server" CssClass="sidebar-link waves-effect waves-dark sidebar-link" NavigateUrl="~/AdminPanel/Dashboard/Dashboard.aspx">
+                                <i class="fa fa-user" aria-hidden="true"></i><span class="hide-menu">Dashboard           
+                                </span>
+                                </asp:HyperLink>
+
+                            </li>
+
+                            <!-- User Profile-->
+                            <li class="sidebar-item">
+                                <asp:HyperLink runat="server" CssClass="sidebar-link waves-effect waves-dark sidebar-link" NavigateUrl="~/AdminPanel/User/UserProfile.aspx">
+                                <i class="fa fa-user" aria-hidden="true"></i><span class="hide-menu">Profile           
+                                </span>
+                                </asp:HyperLink>
+
+                            </li>
+
+                            <li class="sidebar-item">
+                                <div class="dropdown">
+
+                                    <asp:HyperLink runat="server" CssClass="dropdown-toggle sidebar-link waves-effect waves-dark sidebar-link" data-toggle="dropdown">
+                                    <i class="fas fa-flag"
+                                aria-hidden="true"></i><span class="hide-menu">Country</span>
+                                    </asp:HyperLink>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/Country/CountryAddEdit.aspx">Country Add</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/Country/CountryList.aspx">Country List</asp:HyperLink></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+
+                            <li class="sidebar-item">
+                                <div class="dropdown">
+                                    <asp:HyperLink runat="server" CssClass="dropdown-toggle sidebar-link waves-effect waves-dark sidebar-link" data-toggle="dropdown">
+                                    <i class="fas fa-industry"
+                                aria-hidden="true"></i><span class="hide-menu">State</span>
+                                    </asp:HyperLink>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/State/StateAddEdit.aspx">State Add</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/State/StateList.aspx">State List</asp:HyperLink></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <div class="dropdown">
+                                    <asp:HyperLink runat="server" CssClass="dropdown-toggle sidebar-link waves-effect waves-dark sidebar-link" data-toggle="dropdown">
+                                    <i class="fas fa-home"
+                                aria-hidden="true"></i><span class="hide-menu">City</span>
+                                    </asp:HyperLink>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/City/CityAddEdit.aspx">City Add</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/City/CityList.aspx">City List</asp:HyperLink></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <div class="dropdown">
+                                    <asp:HyperLink runat="server" CssClass="dropdown-toggle sidebar-link waves-effect waves-dark sidebar-link" data-toggle="dropdown">
+                                    <i class="fas fa-building"
+                                aria-hidden="true"></i><span class="hide-menu">Company</span>
+                                    </asp:HyperLink>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/Company/CompanyAddEdit.aspx">Company Add</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/Company/CompanyList.aspx">Company List</asp:HyperLink></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <div class="dropdown">
+                                    <asp:HyperLink runat="server" CssClass="dropdown-toggle sidebar-link waves-effect waves-dark sidebar-link" data-toggle="dropdown">
+                                    <i class="fas fa-users"
+                                aria-hidden="true"></i><span class="hide-menu">Department</span>
+                                    </asp:HyperLink>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/Department/DepartmentAddEdit.aspx">Department Add</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/Department/DepartmentList.aspx">Department List</asp:HyperLink></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <div class="dropdown">
+                                    <asp:HyperLink runat="server" CssClass="dropdown-toggle sidebar-link waves-effect waves-dark sidebar-link" data-toggle="dropdown">
+                                    <i class="far fa-id-card"
+                                aria-hidden="true"></i><span class="hide-menu">Designation</span>
+                                    </asp:HyperLink>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/Designation/DesignationAddEdit.aspx">Designation Add</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/Designation/DesignationList.aspx">Designation List</asp:HyperLink></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <div class="dropdown">
+                                    <asp:HyperLink runat="server" CssClass="dropdown-toggle sidebar-link waves-effect waves-dark sidebar-link" data-toggle="dropdown">
+                                    <i class="fas fa-male"
+                                aria-hidden="true"></i><span class="hide-menu">Employee</span>
+                                    </asp:HyperLink>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/Employee/EmployeeAddEdit.aspx">Employee Add</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/Employee/EmployeeList.aspx">Employee List</asp:HyperLink></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <div class="dropdown">
+                                    <asp:HyperLink runat="server" CssClass="dropdown-toggle sidebar-link waves-effect waves-dark sidebar-link" data-toggle="dropdown">
+                                    <i class="fas fa-sign-out-alt"
+                                aria-hidden="true"></i><span class="hide-menu">Leave Types</span>
+                                    </asp:HyperLink>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/LeaveType/LeaveTypeAddEdit.aspx">Leave Types Add</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/LeaveType/LeaveTypeList.aspx">Leave Types List</asp:HyperLink></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <div class="dropdown">
+                                    <asp:HyperLink runat="server" CssClass="dropdown-toggle sidebar-link waves-effect waves-dark sidebar-link" data-toggle="dropdown">
+                                    <i class="fas fa-credit-card"
+                                aria-hidden="true"></i><span class="hide-menu">Leave Credits</span>
+                                    </asp:HyperLink>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/LeaveCredits/LeaveCreditsAddEdit.aspx">Leave Credits Add</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/LeaveCredits/LeaveCreditsList.aspx">Leave Credits List</asp:HyperLink></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <div class="dropdown">
+                                    <asp:HyperLink runat="server" CssClass="dropdown-toggle sidebar-link waves-effect waves-dark sidebar-link" data-toggle="dropdown">
+                                    <i class="fas fa-cart-arrow-down"
+                                aria-hidden="true"></i><span class="hide-menu">Leaves Taken</span>
+                                    </asp:HyperLink>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/LeavesTaken/LeavesTakenAddEdit.aspx">Leaves Taken Add</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink runat="server" CssClass="form-control" NavigateUrl="~/AdminPanel/LeavesTaken/LeavesTakenList.aspx">Leaves Taken List</asp:HyperLink></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+
+
+                        </ul>
+
+                    </nav>
+                    <!-- End Sidebar navigation -->
+                </div>
+                <!-- End Sidebar scroll-->
+            </aside>
+            <!-- ============================================================== -->
+            <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Page wrapper  -->
+            <!-- ============================================================== -->
+            <div class="page-wrapper" style="min-height: 250px;">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="page-breadcrumb bg-white">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                            <asp:ContentPlaceHolder ID="cphTitle" runat="server"></asp:ContentPlaceHolder>
+                        </div>
+                        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                            <div class="d-md-flex text-right">
+                                <ol class="breadcrumb ml-auto">
+                                    <asp:ContentPlaceHolder ID="cphBreadCrumb" runat="server"></asp:ContentPlaceHolder>
+                                </ol>
+                                <asp:ContentPlaceHolder ID="cphToList" runat="server">
+                                </asp:ContentPlaceHolder>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Container fluid  -->
+                <!-- ============================================================== -->
+                <div class="container-fluid">
+                    <!-- ============================================================== -->
+                    <!-- Start Page Content -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-12">
+                            <div class="white-box">
+                                <asp:ContentPlaceHolder ID="cphContent" runat="server">
+                                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+                                </asp:ContentPlaceHolder>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End PAge Content -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Right sidebar -->
+                    <!-- ============================================================== -->
+                    <!-- .right-sidebar -->
+                    <!-- ============================================================== -->
+                    <!-- End Right sidebar -->
+                    <!-- ============================================================== -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Container fluid  -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- footer -->
+                <!-- ============================================================== -->
+                <footer class="footer text-center">
+                    2021 © Sabbatical Staff Leave Management System 
+                </footer>
+                <!-- ============================================================== -->
+                <!-- End footer -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Page wrapper  -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Wrapper -->
+        <!-- ============================================================== -->
+        <!-- All Jquery -->
+        <!-- ============================================================== -->
+        <script src="<%=ResolveClientUrl("~/Content/assets/plugins/bower_components/jquery/dist/jquery.min.js")%>" type="text/javascript"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="<%=ResolveClientUrl("~/Content/assets/plugins/bower_components/popper.js/dist/umd/popper.min.js")%>" type="text/javascript"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="<%=ResolveClientUrl("~/Content/assets/js/app-style-switcher.js" )%>" type="text/javascript"></script>
+        <script src="<%=ResolveClientUrl("~/Content/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js")%>" type="text/javascript"></script>
+        <!--Wave Effects -->
+        <script src="<%=ResolveClientUrl("~/Content/assets/js/waves.js")%>" type="text/javascript"></script>
+        <!--Menu sidebar -->
+        <script src="<%=ResolveClientUrl("~/Content/assets/js/sidebarmenu.js")%>" type="text/javascript"></script>
+        <!--Custom JavaScript -->
+        <script src="<%=ResolveClientUrl("~/Content/assets/js/custom.js")%>" type="text/javascript"></script>
+        <!--This page JavaScript -->
+        <!--chartis chart-->
+        <script src="<%=ResolveClientUrl("~/Content/assets/plugins/bower_components/chartist/dist/chartist.min.js")%>" type="text/javascript"></script>
+        <script src="<%=ResolveClientUrl("~/Content/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js")%>" type="text/javascript"></script>
+        <script src="<%=ResolveClientUrl("~/Content/assets/js/pages/dashboards/dashboard1.js")%>" type="text/javascript"></script>
+        <script type="text/javascript">
+            function openModal() {
+                $('#mymodal').modal('show');
+            }
+
+        </script>
+    </form>
+</body>
+</html>
